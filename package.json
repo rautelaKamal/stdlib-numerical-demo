@@ -1,0 +1,16 @@
+{
+    "private": true,
+    "name": "stdlib-numerical-demo",
+    "version": "1.0.0",
+    "description": "A numerical accuracy explorer showcasing stdlib's math functions",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "compare": "node lib/compare.js",
+        "edge-cases": "node lib/edge_cases.js",
+        "plot": "node lib/ascii_plot.js"
+    },
+    "dependencies": {
+        "@stdlib/stdlib": "^0.3.2"
+    }
+}
