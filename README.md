@@ -1,17 +1,39 @@
 # stdlib Numerical Accuracy Explorer
 
-> A showcase demonstrating the power, precision, and robustness of [stdlib's][stdlib] mathematical functions through accuracy comparisons, edge case testing, and ASCII visualizations.
+> A comprehensive showcase demonstrating the power, precision, and robustness of [stdlib's][stdlib] mathematical functions through **interactive web visualizations**, accuracy comparisons, edge case testing, and performance benchmarking.
 
-## Motivation
+<div align="center">
 
-JavaScript's built-in `Math` object provides basic mathematical functions, but they can vary in accuracy across environments and may not handle all IEEE 754 edge cases correctly. [stdlib][stdlib] provides carefully implemented alternatives with:
+**[🌐 Launch Web Demo](web/index.html)** · **[💻 Run CLI Demo](#cli-usage)** · **[📖 About stdlib](https://stdlib.io)**
 
-- **Guaranteed accuracy** across all platforms
-- **Proper handling** of special values (NaN, ±Infinity, ±0, subnormals)
-- **Extensive constants** for IEEE 754 floating-point arithmetic
-- **Typed array utilities** for efficient numerical computation
+</div>
 
-This showcase explores these advantages through three interactive demos.
+---
+
+## ✨ Features
+
+This showcase consists of **two complementary demos**:
+
+### 🌐 Interactive Web Explorer (`web/`)
+
+A browser-based application with four interactive sections:
+
+1. **📈 Interactive Function Plotter** — Real-time canvas-based plot with mouse crosshair tracking, 16 functions, adjustable ranges, and resolution control
+2. **🔬 Accuracy Deep Dive** — ULP (Unit in the Last Place) scatter plot comparing reference vs native implementations across thousands of points
+3. **⚡ IEEE 754 Edge Case Explorer** — Interactive table showing how functions handle NaN, ±Infinity, ±0, subnormals, overflow, and underflow
+4. **⏱️ Performance Benchmark** — Measure and compare function evaluation speed with visual bar charts
+
+**Functions available:** exp, exp2, expm1, ln, log2, log10, log1p, sqrt, cbrt, sin, cos, tan, sigmoid, gaussian, sinc, heaviside
+
+### 💻 CLI Accuracy Tool (`index.js`)
+
+A Node.js application that uses stdlib directly:
+
+1. **Accuracy Comparison** — stdlib vs native `Math` using ULP analysis across 20,000+ test points
+2. **Edge Case Testing** — 24 automated tests for IEEE 754 special value handling
+3. **ASCII Visualization** — Terminal-based plots of exp, ln, sqrt, sigmoid, and gaussian
+
+---
 
 ## Installation
 
@@ -23,6 +45,18 @@ npm install
 
 ## Usage
 
+### Web Demo
+
+Simply open `web/index.html` in your browser:
+
+```bash
+open web/index.html
+```
+
+No build step required — it's a standalone HTML/CSS/JS application.
+
+### CLI Usage
+
 Run all demos:
 
 ```bash
@@ -32,48 +66,16 @@ node index.js
 Or run individual modules:
 
 ```bash
-# Accuracy comparison: stdlib vs native Math
-node lib/compare.js
-
-# Edge case testing: NaN, Infinity, underflow, overflow
-node lib/edge_cases.js
-
-# ASCII function visualizations
-node lib/ascii_plot.js
+node lib/compare.js       # Accuracy comparison (stdlib vs native)
+node lib/edge_cases.js     # IEEE 754 edge case testing
+node lib/ascii_plot.js     # ASCII function visualization
 ```
+
+---
 
 ## What This Demonstrates
 
-### Part 1: Accuracy Comparison
-
-Compares stdlib functions against native JavaScript `Math` across thousands of test points, measuring accuracy in [ULPs][ulp] (Units in the Last Place):
-
-- `exp(x)` vs `Math.exp(x)` — tested on standard and extreme ranges
-- `ln(x)` vs `Math.log(x)` — tested on tiny, normal, and large inputs
-- `sqrt(x)` vs `Math.sqrt(x)` — tested across positive reals
-
-### Part 2: Edge Case Handling
-
-Tests how stdlib correctly handles IEEE 754 special cases:
-
-- **NaN propagation**: `exp(NaN) → NaN`, `ln(NaN) → NaN`
-- **Infinity handling**: `exp(+∞) → +∞`, `exp(-∞) → 0`
-- **Signed zero**: `sqrt(-0) → -0` (per IEEE 754)
-- **Overflow/underflow**: `exp(710) → +∞`, `exp(-745) → 0`
-- **Subnormal inputs**: `ln(5e-324)` handles denormalized numbers
-- **Domain errors**: `ln(-1) → NaN`, `sqrt(-1) → NaN`
-
-### Part 3: ASCII Visualizations
-
-Renders function plots directly in the terminal using stdlib's array utilities:
-
-- `exp(x)` — exponential growth
-- `ln(x)` — natural logarithm
-- `sqrt(x)` — square root
-- `sigmoid(x) = 1/(1+exp(-x))` — built from stdlib's `exp`
-- `gaussian(x) = exp(-x²)` — bell curve from stdlib's `exp`
-
-## stdlib Packages Used
+### stdlib Packages Used (CLI)
 
 | Package | Purpose |
 |---|---|
@@ -96,6 +98,17 @@ Renders function plots directly in the terminal using stdlib's array utilities:
 | `@stdlib/constants/float64/smallest-normal` | Smallest normal float64 |
 | `@stdlib/array/linspace` | Evenly spaced array generation |
 
+### Key Numerical Computing Concepts Demonstrated
+
+- **ULP (Unit in the Last Place) analysis** — The standard measure for floating-point accuracy
+- **IEEE 754 edge cases** — Proper handling of NaN, ±Infinity, ±0, subnormals
+- **Catastrophic cancellation** — Why functions like `expm1` and `log1p` exist
+- **Argument reduction** — Technique for computing functions over wide ranges
+- **Overflow/underflow** — Boundary behavior at the limits of float64 representation
+- **Polynomial approximation** — Horner-form evaluation for function computation
+
+---
+
 ## Project Structure
 
 ```
@@ -103,18 +116,66 @@ stdlib-numerical-demo/
 ├── .gitignore
 ├── package.json
 ├── README.md
-├── index.js              # Main entry point — runs all demos
-└── lib/
-    ├── compare.js        # Accuracy comparison (stdlib vs native)
-    ├── edge_cases.js     # IEEE 754 edge case testing
-    └── ascii_plot.js     # ASCII function visualization
+├── index.js                  # CLI main entry point
+├── lib/
+│   ├── compare.js            # CLI: Accuracy comparison (stdlib vs native)
+│   ├── edge_cases.js         # CLI: IEEE 754 edge case testing
+│   └── ascii_plot.js         # CLI: ASCII function visualization
+└── web/
+    ├── index.html            # Web: Interactive math explorer
+    ├── styles.css            # Web: Modern dark-themed styles
+    └── app.js                # Web: Interactive plotting engine
 ```
+
+---
+
+## Technical Highlights
+
+### Accuracy Analysis Approach
+
+The accuracy comparison uses **ULP (Unit in the Last Place)** measurement, which is the standard way to evaluate floating-point function accuracy in numerical computing:
+
+```
+ULP difference = |a - b| / (|a| × ε)
+```
+
+where `ε` is machine epsilon (`2.22e-16` for float64).
+
+### Edge Case Coverage
+
+Tests all critical IEEE 754 special values:
+
+| Category | Values Tested |
+|---|---|
+| **Zeros** | +0, -0 |
+| **Infinities** | +∞, -∞ |
+| **Not-a-Number** | NaN |
+| **Subnormals** | 5e-324 (smallest representable) |
+| **Overflow boundary** | 710 (exp overflow), 1e+300 |
+| **Underflow boundary** | -745 (exp underflow), 1e-300 |
+| **Mathematical constants** | π, π/2, e |
+
+### Web Demo Architecture
+
+The web demo implements key numerical computing patterns from scratch, mirroring stdlib's approach:
+
+- **Argument reduction** for computing exp(x) over wide ranges
+- **Taylor series with Horner evaluation** for polynomial approximation
+- **Range-based testing** with configurable resolution
+- **Real-time canvas rendering** with interactive crosshair tracking
+
+---
 
 ## About
 
 Created as a showcase for [Google Summer of Code 2026][gsoc] with [stdlib][stdlib].
 
 **Author:** Kamal Rautela ([@rautelaKamal](https://github.com/rautelaKamal))
+
+### Related Contributions
+
+- [PR #10196](https://github.com/stdlib-js/stdlib/pull/10196) — Heaviside C implementation (merged)
+- [PR #10191](https://github.com/stdlib-js/stdlib/pull/10191) — exp2 port from OpenLibm (in review)
 
 ## License
 

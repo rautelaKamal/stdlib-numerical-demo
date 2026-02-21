@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stdlib Math Explorer — Interactive Function Visualizer</title>
+    <meta name="description" content="Interactive mathematical function explorer powered by stdlib concepts. Visualize, compare, and explore special functions with real-time plotting.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header id="app-header">
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">∑</span>
+                <div>
+                    <h1>stdlib Math Explorer</h1>
+                    <p class="subtitle">Interactive Function Visualizer &amp; Accuracy Analyzer</p>
+                </div>
+            </div>
+            <a href="https://github.com/stdlib-js/stdlib" class="github-link" target="_blank" rel="noopener">
+                Powered by stdlib
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Section 1: Interactive Function Plotter -->
+        <section id="plotter-section" class="card">
+            <div class="card-header">
+                <h2>📈 Interactive Function Plotter</h2>
+                <p>Select and visualize mathematical functions in real-time</p>
+            </div>
+            <div class="plotter-layout">
+                <div class="controls-panel">
+                    <div class="control-group">
+                        <label for="function-select">Function</label>
+                        <select id="function-select">
+                            <optgroup label="Exponential">
+                                <option value="exp" selected>exp(x) — Exponential</option>
+                                <option value="exp2">exp2(x) — Base-2 Exponential</option>
+                                <option value="expm1">expm1(x) — exp(x) - 1</option>
+                            </optgroup>
+                            <optgroup label="Logarithmic">
+                                <option value="ln">ln(x) — Natural Log</option>
+                                <option value="log2">log2(x) — Base-2 Log</option>
+                                <option value="log10">log10(x) — Base-10 Log</option>
+                                <option value="log1p">log1p(x) — ln(1+x)</option>
+                            </optgroup>
+                            <optgroup label="Power & Root">
+                                <option value="sqrt">sqrt(x) — Square Root</option>
+                                <option value="cbrt">cbrt(x) — Cube Root</option>
+                            </optgroup>
+                            <optgroup label="Trigonometric">
+                                <option value="sin">sin(x)</option>
+                                <option value="cos">cos(x)</option>
+                                <option value="tan">tan(x)</option>
+                            </optgroup>
+                            <optgroup label="Special">
+                                <option value="sigmoid">sigmoid(x) — 1/(1+exp(-x))</option>
+                                <option value="gaussian">gaussian(x) — exp(-x²)</option>
+                                <option value="sinc">sinc(x) — sin(πx)/(πx)</option>
+                                <option value="heaviside">heaviside(x) — Step Function</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label for="xmin-input">X Range</label>
+                        <div class="range-inputs">
+                            <input type="number" id="xmin-input" value="-5" step="0.5">
+                            <span>to</span>
+                            <input type="number" id="xmax-input" value="5" step="0.5">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="resolution-slider">Resolution: <span id="resolution-value">500</span> points</label>
+                        <input type="range" id="resolution-slider" min="50" max="2000" value="500" step="50">
+                    </div>
+                    <div class="control-group">
+                        <label>Display Options</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="show-grid" checked> Grid
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="show-axes" checked> Axes
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="show-values" checked> Values
+                            </label>
+                        </div>
+                    </div>
+                    <div id="function-info" class="info-box">
+                        <h4>exp(x)</h4>
+                        <p class="info-desc">The exponential function. Maps every real number to a positive number. Foundation of calculus, differential equations, and complex analysis.</p>
+                        <div class="info-properties">
+                            <div><span class="prop-label">Domain:</span> (-∞, +∞)</div>
+                            <div><span class="prop-label">Range:</span> (0, +∞)</div>
+                            <div><span class="prop-label">exp(0):</span> 1</div>
+                            <div><span class="prop-label">exp(1):</span> e ≈ 2.71828</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="plot-canvas" width="700" height="450"></canvas>
+                    <div id="cursor-info" class="cursor-info hidden">
+                        <span id="cursor-x">x: 0</span>
+                        <span id="cursor-y">y: 0</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Accuracy Comparison -->
+        <section id="accuracy-section" class="card">
+            <div class="card-header">
+                <h2>🔬 Accuracy Deep Dive</h2>
+                <p>Compare implementation accuracy with ULP (Unit in the Last Place) analysis</p>
+            </div>
+            <div class="accuracy-layout">
+                <div class="accuracy-controls">
+                    <div class="control-group">
+                        <label for="accuracy-function">Function to Analyze</label>
+                        <select id="accuracy-function">
+                            <option value="exp">exp(x)</option>
+                            <option value="ln">ln(x)</option>
+                            <option value="sqrt">sqrt(x)</option>
+                            <option value="sin">sin(x)</option>
+                            <option value="cos">cos(x)</option>
+                        </select>
+                    </div>
+                    <button id="run-accuracy-btn" class="btn-primary">Run Analysis</button>
+                    <div id="accuracy-stats" class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value" id="stat-points">—</div>
+                            <div class="stat-label">Points Tested</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="stat-agree">—</div>
+                            <div class="stat-label">Exact Agreement</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="stat-max-ulp">—</div>
+                            <div class="stat-label">Max ULP Diff</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="stat-avg-ulp">—</div>
+                            <div class="stat-label">Avg ULP Diff</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="accuracy-canvas" width="700" height="350"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Edge Case Explorer -->
+        <section id="edge-section" class="card">
+            <div class="card-header">
+                <h2>⚡ IEEE 754 Edge Case Explorer</h2>
+                <p>Explore how mathematical functions handle special floating-point values</p>
+            </div>
+            <div class="edge-layout">
+                <div class="edge-table-container">
+                    <table id="edge-table">
+                        <thead>
+                            <tr>
+                                <th>Input</th>
+                                <th>exp(x)</th>
+                                <th>ln(x)</th>
+                                <th>sqrt(x)</th>
+                                <th>sin(x)</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="edge-tbody">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="edge-info">
+                    <div class="ieee-card">
+                        <h4>What is IEEE 754?</h4>
+                        <p>IEEE 754 is the standard for floating-point arithmetic, defining how computers represent real numbers. stdlib implements functions that correctly handle all special cases defined by this standard.</p>
+                    </div>
+                    <div class="ieee-card">
+                        <h4>Key Constants</h4>
+                        <div class="constant-list">
+                            <div class="constant-item">
+                                <code>FLOAT64_EPS</code>
+                                <span>≈ 2.22e-16</span>
+                            </div>
+                            <div class="constant-item">
+                                <code>FLOAT64_MAX</code>
+                                <span>≈ 1.80e+308</span>
+                            </div>
+                            <div class="constant-item">
+                                <code>FLOAT64_MIN</code>
+                                <span>≈ 5.00e-324</span>
+                            </div>
+                            <div class="constant-item">
+                                <code>SMALLEST_NORMAL</code>
+                                <span>≈ 2.23e-308</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Performance Benchmark -->
+        <section id="benchmark-section" class="card">
+            <div class="card-header">
+                <h2>⏱️ Performance Benchmark</h2>
+                <p>Measure function evaluation speed across thousands of iterations</p>
+            </div>
+            <div class="benchmark-layout">
+                <div class="benchmark-controls">
+                    <div class="control-group">
+                        <label for="bench-iterations">Iterations</label>
+                        <select id="bench-iterations">
+                            <option value="10000">10,000</option>
+                            <option value="100000" selected>100,000</option>
+                            <option value="1000000">1,000,000</option>
+                        </select>
+                    </div>
+                    <button id="run-benchmark-btn" class="btn-primary">Run Benchmark</button>
+                </div>
+                <div id="benchmark-results" class="benchmark-bars">
+                    <p class="benchmark-placeholder">Click "Run Benchmark" to compare function performance</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>
+            Built with ❤️ as a <strong>Google Summer of Code 2026</strong> showcase for
+            <a href="https://github.com/stdlib-js/stdlib" target="_blank" rel="noopener">stdlib-js</a>
+            — The fundamental numerical library for JavaScript
+        </p>
+        <p class="footer-author">
+            By <a href="https://github.com/rautelaKamal" target="_blank" rel="noopener">Kamal Rautela</a>
+        </p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
