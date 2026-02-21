@@ -174,6 +174,9 @@ Created as a showcase for [Google Summer of Code 2026][gsoc] with [stdlib][stdli
 
 ### Related Contributions
 
+- [PR #10406](https://github.com/stdlib-js/stdlib/pull/10406) — Fixed EditorConfig lint errors in test fixtures (in review)
+- [PR #10405](https://github.com/stdlib-js/stdlib/pull/10405) — Fixed JavaScript layout lint errors in benchmarks (in review)
+- [PR #10404](https://github.com/stdlib-js/stdlib/pull/10404) — Fixed JavaScript layout lint errors in examples (in review)
 - [PR #10196](https://github.com/stdlib-js/stdlib/pull/10196) — Heaviside C implementation (merged)
 - [PR #10191](https://github.com/stdlib-js/stdlib/pull/10191) — exp2 port from OpenLibm (in review)
 
