@@ -174,9 +174,10 @@ Created as a showcase for [Google Summer of Code 2026][gsoc] with [stdlib][stdli
 
 ### Related Contributions
 
-- [PR #10462](https://github.com/stdlib-js/stdlib/pull/10462) — Refactored stats/nanmax-by benchmarks to use string interpolation (approved)
-- [PR #10459](https://github.com/stdlib-js/stdlib/pull/10459) — Refactored stats/maxsorted benchmarks to use string interpolation (approved)
-- [PR #10457](https://github.com/stdlib-js/stdlib/pull/10457) — Refactored stats/kstest benchmarks to use string interpolation (in review)
+- [PR #10465](https://github.com/stdlib-js/stdlib/pull/10465) — Refactored stats/min-by benchmarks to use string interpolation (merged)
+- [PR #10462](https://github.com/stdlib-js/stdlib/pull/10462) — Refactored stats/nanmax-by benchmarks to use string interpolation (merged)
+- [PR #10459](https://github.com/stdlib-js/stdlib/pull/10459) — Refactored stats/maxsorted benchmarks to use string interpolation (merged)
+- [PR #10457](https://github.com/stdlib-js/stdlib/pull/10457) — Refactored stats/kstest benchmarks to use string interpolation (merged)
 - [PR #10406](https://github.com/stdlib-js/stdlib/pull/10406) — Fixed EditorConfig lint errors in test fixtures (merged)
 - [PR #10405](https://github.com/stdlib-js/stdlib/pull/10405) — Fixed JavaScript layout lint errors in benchmarks (in review)
 - [PR #10404](https://github.com/stdlib-js/stdlib/pull/10404) — Fixed JavaScript layout lint errors in examples (in review)
