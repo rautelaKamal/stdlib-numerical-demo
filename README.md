@@ -77,26 +77,26 @@ node lib/ascii_plot.js     # ASCII function visualization
 
 ### stdlib Packages Used (CLI)
 
-| Package | Purpose |
-|---|---|
-| `@stdlib/math/base/special/exp` | Exponential function |
-| `@stdlib/math/base/special/ln` | Natural logarithm |
-| `@stdlib/math/base/special/sqrt` | Square root |
-| `@stdlib/math/base/special/abs` | Absolute value |
-| `@stdlib/math/base/special/floor` | Floor function |
-| `@stdlib/math/base/special/round` | Round function |
-| `@stdlib/math/base/special/max` | Maximum of two values |
-| `@stdlib/math/base/special/min` | Minimum of two values |
-| `@stdlib/math/base/assert/is-nan` | NaN detection |
-| `@stdlib/math/base/assert/is-infinite` | Infinity detection |
-| `@stdlib/math/base/assert/is-positive-zero` | +0 detection |
-| `@stdlib/math/base/assert/is-negative-zero` | -0 detection |
-| `@stdlib/constants/float64/eps` | Machine epsilon |
-| `@stdlib/constants/float64/pinf` | Positive infinity |
-| `@stdlib/constants/float64/ninf` | Negative infinity |
-| `@stdlib/constants/float64/max` | Largest float64 |
-| `@stdlib/constants/float64/smallest-normal` | Smallest normal float64 |
-| `@stdlib/array/linspace` | Evenly spaced array generation |
+| Package                                     | Purpose                        |
+| ------------------------------------------- | ------------------------------ |
+| `@stdlib/math/base/special/exp`             | Exponential function           |
+| `@stdlib/math/base/special/ln`              | Natural logarithm              |
+| `@stdlib/math/base/special/sqrt`            | Square root                    |
+| `@stdlib/math/base/special/abs`             | Absolute value                 |
+| `@stdlib/math/base/special/floor`           | Floor function                 |
+| `@stdlib/math/base/special/round`           | Round function                 |
+| `@stdlib/math/base/special/max`             | Maximum of two values          |
+| `@stdlib/math/base/special/min`             | Minimum of two values          |
+| `@stdlib/math/base/assert/is-nan`           | NaN detection                  |
+| `@stdlib/math/base/assert/is-infinite`      | Infinity detection             |
+| `@stdlib/math/base/assert/is-positive-zero` | +0 detection                   |
+| `@stdlib/math/base/assert/is-negative-zero` | -0 detection                   |
+| `@stdlib/constants/float64/eps`             | Machine epsilon                |
+| `@stdlib/constants/float64/pinf`            | Positive infinity              |
+| `@stdlib/constants/float64/ninf`            | Negative infinity              |
+| `@stdlib/constants/float64/max`             | Largest float64                |
+| `@stdlib/constants/float64/smallest-normal` | Smallest normal float64        |
+| `@stdlib/array/linspace`                    | Evenly spaced array generation |
 
 ### Key Numerical Computing Concepts Demonstrated
 
@@ -145,15 +145,15 @@ where `ε` is machine epsilon (`2.22e-16` for float64).
 
 Tests all critical IEEE 754 special values:
 
-| Category | Values Tested |
-|---|---|
-| **Zeros** | +0, -0 |
-| **Infinities** | +∞, -∞ |
-| **Not-a-Number** | NaN |
-| **Subnormals** | 5e-324 (smallest representable) |
-| **Overflow boundary** | 710 (exp overflow), 1e+300 |
-| **Underflow boundary** | -745 (exp underflow), 1e-300 |
-| **Mathematical constants** | π, π/2, e |
+| Category                   | Values Tested                   |
+| -------------------------- | ------------------------------- |
+| **Zeros**                  | +0, -0                          |
+| **Infinities**             | +∞, -∞                          |
+| **Not-a-Number**           | NaN                             |
+| **Subnormals**             | 5e-324 (smallest representable) |
+| **Overflow boundary**      | 710 (exp overflow), 1e+300      |
+| **Underflow boundary**     | -745 (exp underflow), 1e-300    |
+| **Mathematical constants** | π, π/2, e                       |
 
 ### Web Demo Architecture
 
@@ -174,7 +174,10 @@ Created as a showcase for [Google Summer of Code 2026][gsoc] with [stdlib][stdli
 
 ### Related Contributions
 
-- [PR #10406](https://github.com/stdlib-js/stdlib/pull/10406) — Fixed EditorConfig lint errors in test fixtures (in review)
+- [PR #10462](https://github.com/stdlib-js/stdlib/pull/10462) — Refactored stats/nanmax-by benchmarks to use string interpolation (approved)
+- [PR #10459](https://github.com/stdlib-js/stdlib/pull/10459) — Refactored stats/maxsorted benchmarks to use string interpolation (approved)
+- [PR #10457](https://github.com/stdlib-js/stdlib/pull/10457) — Refactored stats/kstest benchmarks to use string interpolation (in review)
+- [PR #10406](https://github.com/stdlib-js/stdlib/pull/10406) — Fixed EditorConfig lint errors in test fixtures (merged)
 - [PR #10405](https://github.com/stdlib-js/stdlib/pull/10405) — Fixed JavaScript layout lint errors in benchmarks (in review)
 - [PR #10404](https://github.com/stdlib-js/stdlib/pull/10404) — Fixed JavaScript layout lint errors in examples (in review)
 - [PR #10196](https://github.com/stdlib-js/stdlib/pull/10196) — Heaviside C implementation (merged)
