@@ -218,6 +218,49 @@
             'props': { 'sinc(0)': '1', 'sinc(n)': '0 for n≠0' },
             'defaultRange': [-8, 8]
         },
+        'erf': {
+            'fn': function erf(x) {
+                // Rational approximation for erf...
+                var a1 = 0.254829592;
+                var a2 = -0.284496736;
+                var a3 = 1.421413741;
+                var a4 = -1.453152027;
+                var a5 = 1.061405429;
+                var p = 0.3275911;
+                var sign = (x < 0) ? -1 : 1;
+                var absx = Math.abs(x);
+                var t = 1.0 / (1.0 + p * absx);
+                var y = 1.0 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Math.exp(-absx * absx);
+                return sign * y;
+            },
+            'name': 'erf(x)',
+            'desc': 'The error function (Gauss error function). Critical in probability, statistics, and diffusion. Describes the probability of a random variable falling in a specific range.',
+            'domain': '(-∞, +∞)',
+            'range': '(-1, 1)',
+            'props': { 'erf(0)': '0', 'erf(∞)': '1', 'erf(1)': '≈ 0.8427' },
+            'defaultRange': [-3, 3]
+        },
+        'erfc': {
+            'fn': function erfc(x) {
+                // erfc(x) = 1 - erf(x)
+                var a1 = 0.254829592;
+                var a2 = -0.284496736;
+                var a3 = 1.421413741;
+                var a4 = -1.453152027;
+                var a5 = 1.061405429;
+                var p = 0.3275911;
+                var absx = Math.abs(x);
+                var t = 1.0 / (1.0 + p * absx);
+                var y = (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Math.exp(-absx * absx);
+                return (x < 0) ? 2.0 - y : y;
+            },
+            'name': 'erfc(x)',
+            'desc': 'Complementary error function 1 - erf(x). Essential for computing small probabilities in the tail of a normal distribution with high precision.',
+            'domain': '(-∞, +∞)',
+            'range': '(0, 2)',
+            'props': { 'erfc(0)': '1', 'erfc(∞)': '0', 'erfc(-∞)': '2' },
+            'defaultRange': [-3, 3]
+        },
         'heaviside': {
             'fn': function heaviside(x) {
                 if (x < 0.0) { return 0.0; }
@@ -783,6 +826,35 @@
             'native': Math.cos,
             'range': [-20, 20],
             'n': 10000
+        },
+        'erf': {
+            'ref': function refErf(x) {
+                // Use a slightly more precise approximation for "reference"
+                // Although in a real app we'd use stdlib's erf!
+                var sign = (x < 0) ? -1 : 1;
+                var absx = Math.abs(x);
+                var t = 1.0 / (1.0 + 0.5 * absx);
+                // Abramowitz and Stegun 7.1.26
+                var tau = t * Math.exp(-absx * absx - 1.26551223 + t * (1.00002368 +
+                    t * (0.37409196 + t * (0.09678418 + t * (-0.18628806 +
+                        t * (0.27886807 + t * (-1.13520398 + t * (1.48851587 +
+                            t * (-0.82215223 + t * 0.17087277)))))))));
+                return sign * (1.0 - tau);
+            },
+            'native': function nativeErf(x) {
+                // Mock "native" erf if not present (browsers don't have it)
+                var a = 0.254829592;
+                var b = -0.284496736;
+                var c = 1.421413741;
+                var d = -1.453152027;
+                var e = 1.061405429;
+                var p = 0.3275911;
+                var t = 1.0 / (1.0 + p * Math.abs(x));
+                var y = 1.0 - (((((e * t + d) * t) + c) * t + b) * t + a) * t * Math.exp(-x * x);
+                return (x < 0) ? -y : y;
+            },
+            'range': [-3, 3],
+            'n': 5000
         }
     };
 
@@ -994,7 +1066,8 @@
             { 'name': 'exp', 'fn': Math.exp },
             { 'name': 'ln', 'fn': Math.log },
             { 'name': 'sqrt', 'fn': Math.sqrt },
-            { 'name': 'sin', 'fn': Math.sin }
+            { 'name': 'sin', 'fn': Math.sin },
+            { 'name': 'erf', 'fn': FUNCTIONS.erf.fn }
         ];
         var html = '';
         var result;
