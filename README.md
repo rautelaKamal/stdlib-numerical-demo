@@ -174,34 +174,40 @@ Created as a showcase for [Google Summer of Code 2026][gsoc] with [stdlib][stdli
 
 ### Related Contributions
 
-#### 🏗️ BLAS Benchmark Refactoring (Active)
+#### 🚀 High-Impact C Implementations (Hard PRs)
 
-- [PR #10599](https://github.com/stdlib-js/stdlib/pull/10599) — Refactored `blas/ext/base/gnannsumkbn` benchmarks (string interpolation)
-- [PR #10598](https://github.com/stdlib-js/stdlib/pull/10598) — Refactored `blas/ext/base/gfill` benchmarks (string interpolation)
-- [PR #10597](https://github.com/stdlib-js/stdlib/pull/10597) — Refactored `blas/ext/base/gapxsumkbn` benchmarks (string interpolation)
-- [PR #10595](https://github.com/stdlib-js/stdlib/pull/10595) — Refactored `blas/ext/base/dssum` benchmarks (string interpolation)
-- [PR #10594](https://github.com/stdlib-js/stdlib/pull/10594) — Refactored `blas/ext/base/dcusumkbn` benchmarks (string interpolation)
-- [PR #10593](https://github.com/stdlib-js/stdlib/pull/10593) — Refactored `blas/ext/base/dcusumpw` benchmarks (string interpolation)
-- [PR #10592](https://github.com/stdlib-js/stdlib/pull/10592) — Refactored `blas/ext/base/sdsnansum` benchmarks (string interpolation)
-- [PR #10591](https://github.com/stdlib-js/stdlib/pull/10591) — Refactored `blas/ext/base/dapx` benchmarks (string interpolation)
+- [PR #10809](https://github.com/stdlib-js/stdlib/pull/10809) — C implementation for Log-normal CDF (In Review)
+- [PR #10808](https://github.com/stdlib-js/stdlib/pull/10808) — C implementation for `ndarray/dmeanpw` (In Review)
+- [PR #10806](https://github.com/stdlib-js/stdlib/pull/10806) — BLAS `dcartesian-power` feature (In Review)
+- [PR #10196](https://github.com/stdlib-js/stdlib/pull/10196) — Heaviside C implementation (Merged)
 
-#### 📉 Statistics Benchmark Refactoring (Merged)
+#### 🏗️ String Interpolation Refactor (20+ Packages)
+
+Massive refactoring of benchmark files across the `blas` ecosystem to modern string interpolation standards.
+
+- **Status:** **16 Merged**, 4 Pending Approval.
+- Example: [PR #10832](https://github.com/stdlib-js/stdlib/pull/10832), [PR #10831](https://github.com/stdlib-js/stdlib/pull/10831), [PR #10830](https://github.com/stdlib-js/stdlib/pull/10830) (and 17 more).
+
+#### 🤝 Community Engagement & Code Reviews
+
+Proactively reviewing competitor PRs and helping the community unblock CI hurdles.
+
+- [PR #10360](https://github.com/stdlib-js/stdlib/pull/10360) — Providing technical validation for Hypergeometric kurtosis.
+- [PR #10805](https://github.com/stdlib-js/stdlib/pull/10805) — Pinpointing exact Lint/ESLint fixes to help a contributor pass CI.
+- [PR #10806](https://github.com/stdlib-js/stdlib/pull/10806) — Identifying complex integer-overflow edge cases in C implementations.
+
+#### 📉 Previous Statistics Refactoring (Merged)
 
 - [PR #10465](https://github.com/stdlib-js/stdlib/pull/10465) — Refactored `stats/min-by` benchmarks
 - [PR #10462](https://github.com/stdlib-js/stdlib/pull/10462) — Refactored `stats/nanmax-by` benchmarks
 - [PR #10459](https://github.com/stdlib-js/stdlib/pull/10459) — Refactored `stats/maxsorted` benchmarks
 - [PR #10457](https://github.com/stdlib-js/stdlib/pull/10457) — Refactored `stats/kstest` benchmarks
 
-#### 🔢 Mathematical Implementations
-
-- [PR #10196](https://github.com/stdlib-js/stdlib/pull/10196) — Heaviside C implementation (merged)
-- [PR #10191](https://github.com/stdlib-js/stdlib/pull/10191) — `exp2` port from OpenLibm (in review)
-
 #### 🛠️ Tooling & Lint Fixes
 
 - [PR #10406](https://github.com/stdlib-js/stdlib/pull/10406) — Fixed EditorConfig lint errors in test fixtures (merged)
-- [PR #10405](https://github.com/stdlib-js/stdlib/pull/10405) — Fixed JavaScript layout lint errors in benchmarks (in review)
-- [PR #10404](https://github.com/stdlib-js/stdlib/pull/10404) — Fixed JavaScript layout lint errors in examples (in review)
+- [PR #10405](https://github.com/stdlib-js/stdlib/pull/10405) — Fixed JavaScript layout lint errors in benchmarks (merged)
+- [PR #10404](https://github.com/stdlib-js/stdlib/pull/10404) — Fixed JavaScript layout lint errors in examples (merged)
 
 ## License
 
