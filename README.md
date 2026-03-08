@@ -181,12 +181,13 @@ Created as a showcase for [Google Summer of Code 2026][gsoc] with [stdlib][stdli
 - [PR #10806](https://github.com/stdlib-js/stdlib/pull/10806) — BLAS `dcartesian-power` feature (In Review)
 - [PR #10196](https://github.com/stdlib-js/stdlib/pull/10196) — Heaviside C implementation (Merged)
 
-#### 🏗️ String Interpolation Refactor (20+ Packages)
+#### 🏗️ Large-Scale Refactoring & Contributions (65+ PRs)
 
-Massive refactoring of benchmark files across the `blas` ecosystem to modern string interpolation standards.
+Extensive refactoring of benchmark and test files across the `stats`, `math`, and `blas` ecosystems to modern `stdlib` standards.
 
-- **Status:** **16 Merged**, 4 Pending Approval.
-- Example: [PR #10832](https://github.com/stdlib-js/stdlib/pull/10832), [PR #10831](https://github.com/stdlib-js/stdlib/pull/10831), [PR #10830](https://github.com/stdlib-js/stdlib/pull/10830) (and 17 more).
+- **Total Contributions:** **50 Merged**, 15 In Review/Pending.
+- **Recent String Interpolation Batch:** 20+ packages refactored to use modern string interpolation.
+- Example: [PR #10832](https://github.com/stdlib-js/stdlib/pull/10832), [PR #10831](https://github.com/stdlib-js/stdlib/pull/10831), [PR #10830](https://github.com/stdlib-js/stdlib/pull/10830).
 
 #### 🤝 Community Engagement & Code Reviews
 
