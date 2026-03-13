@@ -263,16 +263,62 @@
         },
         'heaviside': {
             'fn': function heaviside(x) {
-                if (x < 0.0) { return 0.0; }
-                if (x === 0.0) { return 0.5; }
-                return 1.0;
+                if (x === 0.0) { return NaN; } // stdlib default
+                return (x < 0.0) ? 0.0 : 1.0;
             },
             'name': 'heaviside(x)',
-            'desc': 'Heaviside step function. Equals 0 for x<0 and 1 for x>0. Used in control theory, signal processing, and as the derivative of the ramp function.',
-            'domain': '(-∞, +∞)',
-            'range': '{0, 0.5, 1}',
-            'props': { 'H(0)': '0.5 (half-max)', 'Derivative': 'δ(x)' },
+            'desc': 'Heaviside step function. Equals 0 for x<0 and 1 for x>0. stdlib implementation returns NaN for x=0 by default to signal discontinuity.',
+            'domain': 'x ≠ 0',
+            'range': '{0, 1}',
+            'props': { 'H(0)': 'NaN (disc.)', 'H(1)': '1' },
             'defaultRange': [-3, 3]
+        },
+        'lognormalCDF': {
+            'fn': function lognormalCDF(x) {
+                if (x <= 0.0) return 0.0;
+                var z = Math.log(x) / Math.sqrt(2.0); // mu=0, sigma=1
+                // erf approximation
+                var a1 = 0.254829592; var a2 = -0.284496736; var a3 = 1.421413741;
+                var a4 = -1.453152027; var a5 = 1.061405429; var p = 0.3275911;
+                var sign = (z < 0) ? -1 : 1; var absz = Math.abs(z);
+                var t = 1.0 / (1.0 + p * absz);
+                var y = 1.0 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Math.exp(-absz * absz);
+                return 0.5 * (1.0 + sign * y);
+            },
+            'name': 'lognormal.cdf(x)',
+            'desc': 'Lognormal cumulative distribution function (CDF). Describes the probability of a lognormally distributed variable being less than or equal to x.',
+            'domain': '(0, +∞)',
+            'range': '[0, 1]',
+            'props': { 'μ': '0.0', 'σ': '1.0' },
+            'defaultRange': [0.01, 10]
+        },
+        'lognormalPDF': {
+            'fn': function lognormalPDF(x) {
+                if (x <= 0.0) return 0.0;
+                var lnX = Math.log(x);
+                var s2 = 1.0; // sigma=1
+                var m = 0.0;  // mu=0
+                return (1.0 / (x * Math.sqrt(TWO_PI * s2))) * Math.exp(-(Math.pow(lnX - m, 2)) / (2.0 * s2));
+            },
+            'name': 'lognormal.pdf(x)',
+            'desc': 'Lognormal probability density function (PDF). Used for modeling skewed positive data like stock prices and biological measurements.',
+            'domain': '(0, +∞)',
+            'range': '[0, +∞)',
+            'props': { 'μ': '0.0', 'σ': '1.0' },
+            'defaultRange': [0.01, 10]
+        },
+        'poissonEntropy': {
+            'fn': function poissonEntropy(x) {
+                if (x <= 0.0) return NaN;
+                // High lambda approximation for visualization
+                return 0.5 * Math.log(TWO_PI * E * x) - (1.0 / (12.0 * x)) - (1.0 / (24.0 * x * x));
+            },
+            'name': 'poisson.entropy(λ)',
+            'desc': 'Entropy of the Poisson distribution. Measures the average information content or uncertainty of the distribution given rate λ.',
+            'domain': '(0, +∞)',
+            'range': '[0, +∞)',
+            'props': { 'λ': 'Rate', 'Units': 'Nats' },
+            'defaultRange': [1, 50]
         }
     };
 

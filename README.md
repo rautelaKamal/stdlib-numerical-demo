@@ -23,7 +23,7 @@ A browser-based application with four interactive sections:
 3. **⚡ IEEE 754 Edge Case Explorer** — Interactive table showing how functions handle NaN, ±Infinity, ±0, subnormals, overflow, and underflow
 4. **⏱️ Performance Benchmark** — Measure and compare function evaluation speed with visual bar charts
 
-**Functions available:** exp, exp2, expm1, ln, log2, log10, log1p, sqrt, cbrt, sin, cos, tan, sigmoid, gaussian, sinc, heaviside
+**Functions available:** exp, exp2, expm1, ln, log2, log10, log1p, sqrt, cbrt, sin, cos, tan, sigmoid, gaussian, sinc, erf, erfc, heaviside, lognormal.pdf, lognormal.cdf, poisson.entropy
 
 ### 💻 CLI Accuracy Tool (`index.js`)
 
@@ -96,6 +96,10 @@ node lib/ascii_plot.js     # ASCII function visualization
 | `@stdlib/constants/float64/ninf`            | Negative infinity              |
 | `@stdlib/constants/float64/max`             | Largest float64                |
 | `@stdlib/constants/float64/smallest-normal` | Smallest normal float64        |
+| `@stdlib/math/base/special/heaviside`       | Heaviside step function        |
+| `@stdlib/stats/base/dists/lognormal/cdf`    | Lognormal CDF                  |
+| `@stdlib/stats/base/dists/lognormal/logpdf` | Lognormal LogPDF               |
+| `@stdlib/stats/base/dists/poisson/entropy`  | Poisson entropy                |
 | `@stdlib/array/linspace`                    | Evenly spaced array generation |
 
 ### Key Numerical Computing Concepts Demonstrated
