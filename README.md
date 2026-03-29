@@ -191,8 +191,8 @@ Created as a showcase for [Google Summer of Code 2026][gsoc] with [stdlib][stdli
 
 Extensive maintenance and refactoring of benchmark and test files across the `stats`, `math`, and `blas` ecosystems to conform to modern `stdlib` standards.
 
-- **Total Contributions:** **75+ Merged**, 20+ In Review/Pending.
-- **Massive String Interpolation Batches:** Over 30+ packages thoroughly refactored to strictly use modern format strings and comply with automated CI/CD linting requirements across `discrete-uniform` and `blas`.
+- **Total Contributions:** **54 Merged**, 8 In Review/Pending.
+- **String Interpolation Batches:** Numerous packages thoroughly refactored to strictly use modern format strings and comply with automated CI/CD linting requirements across `discrete-uniform` and `blas`.
 - Examples: [PR #10832](https://github.com/stdlib-js/stdlib/pull/10832), [PR #10831](https://github.com/stdlib-js/stdlib/pull/10831), [PR #10830](https://github.com/stdlib-js/stdlib/pull/10830).
 
 #### 🤝 Community Engagement & Code Reviews
