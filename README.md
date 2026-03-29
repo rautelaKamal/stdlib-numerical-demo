@@ -180,18 +180,20 @@ Created as a showcase for [Google Summer of Code 2026][gsoc] with [stdlib][stdli
 
 #### 🚀 High-Impact C Implementations (Hard PRs)
 
+- **[PR #11201](https://github.com/stdlib-js/stdlib/pull/11201) — C Implementation for F-Distribution PDF (In Review / Proof of Concept)**
+  *Successfully implemented a core statistical distribution in pure C using N-API bindings, conforming precisely to internal `stdlib` mathematical log-space subroutines. Achieved theoretical floating-point precision parity against thousands of Julia & Boost C++ numerical fixtures (`~1e-15` relative errors).*
+- [PR #10837](https://github.com/stdlib-js/stdlib/pull/10837) — C implementation for `stats/base/dists/chi/kurtosis` (Merged)
+- [PR #10836](https://github.com/stdlib-js/stdlib/pull/10836) — C implementation for `stats/base/dists/chi/skewness` (Merged)
 - [PR #10809](https://github.com/stdlib-js/stdlib/pull/10809) — C implementation for Log-normal CDF (In Review)
-- [PR #10808](https://github.com/stdlib-js/stdlib/pull/10808) — C implementation for `ndarray/dmeanpw` (In Review)
-- [PR #10806](https://github.com/stdlib-js/stdlib/pull/10806) — BLAS `dcartesian-power` feature (In Review)
 - [PR #10196](https://github.com/stdlib-js/stdlib/pull/10196) — Heaviside C implementation (Merged)
 
-#### 🏗️ Large-Scale Refactoring & Contributions (65+ PRs)
+#### 🏗️ Large-Scale Refactoring & Contributions (95+ PRs)
 
-Extensive refactoring of benchmark and test files across the `stats`, `math`, and `blas` ecosystems to modern `stdlib` standards.
+Extensive maintenance and refactoring of benchmark and test files across the `stats`, `math`, and `blas` ecosystems to conform to modern `stdlib` standards.
 
-- **Total Contributions:** **50 Merged**, 15 In Review/Pending.
-- **Recent String Interpolation Batch:** 20+ packages refactored to use modern string interpolation.
-- Example: [PR #10832](https://github.com/stdlib-js/stdlib/pull/10832), [PR #10831](https://github.com/stdlib-js/stdlib/pull/10831), [PR #10830](https://github.com/stdlib-js/stdlib/pull/10830).
+- **Total Contributions:** **75+ Merged**, 20+ In Review/Pending.
+- **Massive String Interpolation Batches:** Over 30+ packages thoroughly refactored to strictly use modern format strings and comply with automated CI/CD linting requirements across `discrete-uniform` and `blas`.
+- Examples: [PR #10832](https://github.com/stdlib-js/stdlib/pull/10832), [PR #10831](https://github.com/stdlib-js/stdlib/pull/10831), [PR #10830](https://github.com/stdlib-js/stdlib/pull/10830).
 
 #### 🤝 Community Engagement & Code Reviews
 
