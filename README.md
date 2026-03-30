@@ -210,9 +210,6 @@ Created as a showcase for [Google Summer of Code 2026][gsoc] with [stdlib][stdli
 | PR | Description | Status |
 |----|-------------|--------|
 | [#11201](https://github.com/stdlib-js/stdlib/pull/11201) | **C Implementation for F-Distribution PDF** — Pure C using N-API bindings, conforming to internal `stdlib` log-space subroutines. Achieved `~1e-15` relative errors against Julia & Boost C++ fixtures. | In Review (PoC) |
-| [#10837](https://github.com/stdlib-js/stdlib/pull/10837) | C implementation for `stats/base/dists/chi/kurtosis` | ✅ Merged |
-| [#10836](https://github.com/stdlib-js/stdlib/pull/10836) | C implementation for `stats/base/dists/chi/skewness` | ✅ Merged |
-| [#10809](https://github.com/stdlib-js/stdlib/pull/10809) | C implementation for Lognormal CDF | In Review |
 | [#10196](https://github.com/stdlib-js/stdlib/pull/10196) | Heaviside C implementation | ✅ Merged |
 
 ### 🏗️ Large-Scale Refactoring & Contributions
